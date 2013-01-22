@@ -1,0 +1,62 @@
+###########################################################
+# Platan.us Sample Bluepill Configuration File For Unicorn
+###########################################################
+
+# Set paths
+user = "web"
+group = "web"
+home_dir = "/home/web"
+app_name = "platanus-nest"
+app_path = File.join(home_dir, app_name)
+unicorn_path = app_path + "/bin/unicorn"
+
+# Set environment variables
+rails_env = ENV['RAILS_ENV'] || 'production'
+rails_root = ENV['RAILS_ROOT'] || app_path
+
+
+Bluepill.application(app_name, :log_file => rails_root+"/log/bluepill.log") do |app|
+  app.process("unicorn") do |process|
+
+    ## THE APPLICATION ##
+    ## -----------------
+
+    process.uid = user
+    process.gid = group
+
+    # Set Unicorn PID file
+    process.pid_file = File.join(rails_root, 'tmp', 'pids', 'unicorn.pid')
+    process.working_dir = "#{rails_root}"
+
+    # Set the command line argument to START Unicorn.
+    process.start_command = "#{unicorn_path} -Dc #{app_path}/config/unicorn.rb -E #{rails_env}"
+
+    # Set the command line argument to STOP Unicorn.
+    process.stop_command = "kill -QUIT {{PID}}"
+
+    # Set the command line argument to RESTART Unicorn. (The USR2 causes the master to re-create itself and spawn a new worker pool)
+    process.restart_command = "kill -USR2 {{PID}}"
+
+    ## GRACE PERIODS ##
+    ## -----------------
+
+    # After we start the app, how long should we wait until we start monitoring the application
+    process.start_grace_time = 100.seconds
+
+    # Same as above, grace period after we've restarted the application
+    process.restart_grace_time = 8.seconds
+
+    ## APPLICATION CHECKS
+    ## -----------------
+    process.checks :cpu_usage, :every => 10.seconds, :below => 30, :times => 3
+    process.checks :mem_usage, :every => 10.seconds, :below => 500.megabytes, :times => [3,5]
+
+    ## SETUP UNICORN CHILDREN MONITORING
+    ## -----------------
+    process.monitor_children do |child_process|
+            child_process.checks :cpu_usage, :every => 10, :below => 25, :times => 3
+            child_process.checks :mem_usage, :every => 10, :below => 200.megabytes, :times => [3, 5]
+            child_process.stop_command = "kill -QUIT {{PID}}"
+    end
+  end
+end
