@@ -1,5 +1,5 @@
 Guides to be happy developers ;)
 ======
 
-RailsProduction
-Productivity
+[Deployment](/deployment)
+[Productivity](/productivity)
