@@ -1,162 +1,193 @@
-# Deploy production rails apps
+# Setting Up a production machine
 
-This is a copy/paste/edit from many sites and guides that I read to get the production server running with apps that could be deployed easily.
+We are going to base our production/staging machine on Ubuntu Server 12.04 LTS. This is the base to be used with our deployment tool [negroku](https://github.com/platanus-repos/negroku) which is based on capistrano
 
-At the end of the doc are all the links to the sites I used. [Go there](#references)
+## The basics for your system
 
-## The Server
+Login to the server with the root user
+```bash
+ssh ubuntu@new-machine-host
+sudo su root
+```
 
-Create a user that will run all the applications sin this server
+Set the hostname for the machine, in this case szot
+```bash
+echo "szot" > /etc/hostname # change szot for any name for this particular machine
+echo "szot 127.0.0.1" >> /etc/hosts
+hostname -F /etc/hostname
+```
 
-#### Install rbenv, ruby, bundler and rails
+Update and upgrade your packages
+```bash
+apt-get -y update && apt-get -y upgrade
+```
 
-We start by installing rbenv-installer a nice app that will install `rbenv`, `rbenv-vars` and `rbenv-build` for us
+Install essential dependencies
+```bash
+apt-get install build-essential openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison libmysqlclient15-dev libpcre3 libpcre3-dev
+```
+
+### A new powerfull user
+
+Create a new user
+```bash
+adduser yourname
+```
+
+Add user to the sudo group
+```bash
+usermod -a -G sudo yourname
+```
+Remember to create the `~/.ssh/authorized_keys` file with your public key
+
+Now logout and login again with the sudoer. Remember remove `ubuntu` user.
+
+### The deploy user
+
+Create a user that will run all the deployment tasks
+```bash
+adduser deploy
+echo "deploy ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+```
+
+### Generate a key pair for this user in the `/home/deploy/.ssh` folder, create it if it doens't exist
+```bash
+cd ~/.ssh
+ssh-keygen -t rsa -b 4096 -C "deploy@yourdomain"
+```
+Then you should add this public key as a deploy key in your github repos.
+
+### The deploy access
+Yoy need to add to the `/home/deploy/.ssh/authorized_keys` file all the public keys for the users that are authorized to deploy
+
+Also add the following line to the `/etc/ssh/sshd_config`
+```bash
+AllowUsers deploy anotheruser
+```
+You can add more users
+
+## Install Nginx.
+
+Install nginx from source
+```bash
+sudo add-apt-repository ppa:nginx/stable
+sudo apt-get update
+sudo apt-get -y install nginx
+```
+
+## Install rbenv and ruby
+
+We are going to install rbenv for the deploy user
 
 ```bash
-$ curl -L https://raw.github.com/fesplugas/rbenv-installer/master/bin/rbenv-installer | bash
+git clone git://github.com/sstephenson/rbenv.git ~/.rbenv
 ```
 
 Add rbenv to your PATH. The second command adds shims and autocompletion:
 
 ```bash
-$ echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.profile
-$ echo 'eval "$(rbenv init -)"' >> ~/.profile
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> /home/deploy/.bashrc
+echo 'export RBENV_ROOT="$HOME/.rbenv/"' >> /home/deploy/.bashrc
+echo 'eval "$(rbenv init -)"' >> /home/deploy/.bashrc
 ```
 
-Reload the profile, install one or more rubies and then rehash to refresh the shims:
+Now install ruby-build and rbenv-vars plugins
 
 ```bash
-$ source ~/.profile
-$ rbenv install 1.9.3-p125
-$ rbenv rehash
+mkdir -p ~/.rbenv/plugins
+git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+git clone https://github.com/sstephenson/rbenv-vars.git ~/.rbenv/plugins/rbenv-vars
 ```
 
-Set your new rbenv ruby as the new system-wide default ruby for this user:
+Reload the profile, install one or more rubies and then rehash to refresh the shims
 
 ```bash
-$ rbenv global 1.9.3-p125
+source ~/.bashrc
+rbenv install 2.0.0-p0
+rbenv rehash
 ```
 
-Install bundler
+Set your new rbenv ruby as the new system-wide default ruby for all users using rbenv
 
 ```bash
-$ gem install bundler
-$ rbenv rehash
+rbenv global 2.0.0-p0
 ```
 
-#### Your app
+## Install nodenv and nodejs
 
-If you don't have and `rbenv-version` or `ruby-version` in your project folder you need to set the ruby version.
+We are going to install nodenv for the deploy user
 
 ```bash
-$ rbenv local 1.9.3-p125
+git clone git://github.com/OiNutter/nodenv.git ~/.nodenv
 ```
 
-Install your application dependencies using `--deplayment` and `--binstubs`
+Add nodenv to your PATH. The second command adds shims and autocompletion:
 
 ```bash
-$ cd yourapp
-$ bundle install --deployment --binstubs
+echo 'export PATH="$HOME/.nodenv/bin:$PATH"' >> /home/deploy/.bashrc
+echo 'export NODENV_ROOT="$HOME/.nodenv/"' >> /home/deploy/.bashrc
+echo 'eval "$(nodenv init -)"' >> /home/deploy/.bashrc
 ```
 
-Create a new bin executable for bundle and unicorn or any other app that will run in this environment. You can copy any other file and change what is needed.
-
-For example for unicorn create a `bin/unicorn` file
-
-```ruby
-#!/usr/bin/env ruby
-require 'pathname'
-ENV['BUNDLE_GEMFILE'] ||= File.expand_path("../../Gemfile",
-    Pathname.new(__FILE__).realpath)
-
-require 'rubygems'
-require 'bundler/setup'
-
-load Gem.bin_path('unicorn', 'unicorn')
-```
-
-#### Nginx
-
-Install nginx
+Now install node-build plugin
 
 ```bash
-$ add-apt-repository ppa:nginx/stable
-$ apt-get update
-$ apt-get -y install nginx git-core build-essential
+mkdir -p ~/.nodenv/plugins
+git clone git://github.com/OiNutter/node-build.git ~/.nodenv/plugins/node-build
 ```
 
-Now we can setup our app. We will assume that you have a versioned copy of a `nginx.conf` in your `config` folder. Also you can check a [sample][nginx-file] of this config file
+Reload the profile, install one or more nodes and then rehash to refresh the shims
 
 ```bash
-$ cd /etc/nginx/sites-enabled
-$ sudo ln -s path/to/my/app/config/nginx.conf myappname
-$ sudo service nginx reload
+source ~/.bashrc
+nodenv install 0.10.3
+nodenv rehash
 ```
 
-note: you can test your nginx config using `sudo nginx -t` command
-
-#### Unicorn
-
-Install unicorn
+Set your new nodenv nodejs as the new system-wide default node for all users using nodenv
 
 ```bash
-$ gem install unicorn --no-rdoc --no-ri
-$ rbenv rehash
+nodenv global 0.10.3
 ```
+
+## Install bundler, The Ruby Racer and Unicorn
+
+Install bundler and the ruby racer
+```bash
+gem install bundler
+gem install unicorn
+rbenv rehash
+```
+
+## Install mysql server 5.5
+
+```bash
+sudo apt-get install mysql-server # it will ask you to choose a root password
+```
+
+Add a new user fo the deployments
+```bash
+mysql -u root -p  # it will ask for the root password
+```
+
+```mysql
+mysql> create user pldbadmin identified by '{password}';
+mysql> grant all on *.* to 'pldbadmin' identified by '{password}';
+mysql> flush privileges
+```
+
+## Your app
 
 Adds unicorn as a production gem in the `GemFile`
-
 ```ruby
 group :production do
   gem 'unicorn'
 end
 ```
 
-Add a Unicorn configuration to your app in the file `config/unicorn.rb`. You can use this [sample][unicorn-file]
-
-Now you should be able to run the unicorn server with your app
-
-```bash
-$ bundle exec bin/unicorn -c config/unicorn.rb -E production -D
+Also if your using the assets you need to add the therubyracer gem the the assets group
+```ruby
+group :assets do
+  gem 'therubyracer', :platforms => :ruby
+end
 ```
-
-The log files in `unicorn/err.log` should be helpful to debug any problems.
-
-#### Monitoring processes
-
-We need to monitor the unicorn processes and any other processes we might use in our apps. For this task we are going to use a gem named bluepill.
-
-Install bluepill, you'll also need to create the run directory for bluepill and give the web user permissions over it.
-
-```bash
-$ gem install bluepill
-$ sudo mkdir /var/run/bluepill
-$ sudo chown web:root /var/run/bluepill
-```
-
-Create a pill configuration file. You can use this [sample][unicorn-pill-file]
-
-Then you can run the pill.
-
-```bash
-$ cd path/to/app
-$ bluepill load config/unicorn.pill --no-privileged
-```
-
-
-#### References
-http://henriksjokvist.net/archive/2012/2/deploying-with-rbenv-and-capistrano
-http://airbladesoftware.com/notes/rbenv-in-production
-http://www.harryyeh.com/2012/10/redmine-setup-with-nginx-unicorn-rbenv.html
-https://github.com/sstephenson/rbenv/wiki/Deploying-with-rbenv
-https://github.com/sstephenson/rbenv/issues/101
-http://sirupsen.com/setting-up-unicorn-with-nginx/
-http://blog.halftoneapp.com/unicorn-bluepill-nginx/
-http://devmull.net/articles/unicorn-resque-bluepill
-
-http://www.blogsplat.com/past/2010/3/1/bluepill_upstart_and_delayed_job/
-http://blog.plataformatec.com.br/2010/02/monitoring-delayed-job-with-bluepill-and-capistrano/
-
-[unicorn-file]: unicorn.rb
-[nginx-file]: nginx.conf
-[unicorn-pill-file]: unicorn.pill
