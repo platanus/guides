@@ -81,6 +81,11 @@ sudo apt-get update
 sudo apt-get -y install nginx
 ```
 
+Remove the default site
+```bash
+sudo rm /etc/nginx/sites-enabled/default
+```
+
 ## Install rbenv and ruby
 
 We are going to install rbenv for the deploy user
