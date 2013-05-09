@@ -150,7 +150,7 @@ Set your new nodenv nodejs as the new system-wide default node for all users usi
 nodenv global 0.10.3
 ```
 
-## Install bundler, The Ruby Racer and Unicorn
+## Install bundler and Unicorn
 
 Install bundler and the ruby racer
 ```bash
