@@ -66,6 +66,12 @@ AllowUsers deploy anotheruser
 ```
 You can add more users
 
+### Temp folder for socket files
+```bash
+su deploy
+mkdir -p /home/deploy/tmp
+```
+
 ## Install Nginx.
 
 Install nginx from source
