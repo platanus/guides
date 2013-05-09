@@ -171,10 +171,14 @@ mysql -u root -p  # it will ask for the root password
 ```
 
 ```mysql
-mysql> create user pldbadmin identified by '{password}';
-mysql> grant all on *.* to 'pldbadmin' identified by '{password}';
+mysql> create user 'pldbadmin'@'%' identified by '{password}';
+mysql> grant all on *.* to 'pldbadmin'@'%' identified by '{password}';
+mysql> create user 'pldbadmin'@'localhost' identified by '{password}';
+mysql> grant all on *.* to 'pldbadmin'@'localhost' identified by '{password}';
 mysql> flush privileges
 ```
+
+In the `/etc/mysql/my.cfg` change the binding to `0.0.0.0`
 
 ## Your app
 
