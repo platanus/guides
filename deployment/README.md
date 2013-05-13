@@ -114,7 +114,7 @@ Reload the profile, install one or more rubies and then rehash to refresh the sh
 
 ```bash
 source ~/.bashrc
-rbenv install 2.0.0-p0
+rbenv install 2.0.0-p0  #repeat for all the rubies you want to support
 rbenv rehash
 ```
 
@@ -161,14 +161,14 @@ Set your new nodenv nodejs as the new system-wide default node for all users usi
 nodenv global 0.10.3
 ```
 
-## Install bundler and Unicorn
+## Install bundler
 
-Install bundler and the ruby racer
+Install bundler
 ```bash
 gem install bundler
-gem install unicorn
 rbenv rehash
 ```
+**note**  You need to install bundler for all the rubies you installed
 
 ## Install mysql server 5.5
 
