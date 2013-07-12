@@ -1,4 +1,4 @@
-# Some conventions to ease our inter-projects work
+# Conventions to ease our inter-projects work
 
 ## Coding branches
 
