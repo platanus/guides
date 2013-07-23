@@ -47,6 +47,7 @@ Now logout and login again with the sudoer. Remember remove `ubuntu` user.
 Create a user that will run all the deployment tasks
 ```bash
 adduser deploy
+passwd -l deploy
 echo "deploy ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 ```
 
