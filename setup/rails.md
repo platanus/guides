@@ -1,15 +1,16 @@
 ## Rails new-app setup guide
 
-TODO: make this a generator
-TODO: cap
-TODO: improve heroku instructions
+### Creating the application
 
-# 1. Setup .rbenv-version
+The most common gems and initial configurations are included in a new app by using our [application template](/setup/app_template.rb). In order to use the template we need to pass it as an option to the `rails new` command, like this:
 
-    rbenv versions
-    rbenv local 1.9.3-p125
+`rails new -m https://raw.github.com/platanus/guides/master/setup/app_template.rb --skip-test-unit`
 
-# 2. Setup .rbenv-vars
+Note that we're skipping the default generation of the testing resources, since we'll be using `rspec` instead.
+
+One way to avoid always passing these options is by using a `.railsrc` file in your home directory, like [this one](https://github.com/aarellano/dotfiles/blob/master/.railsrc)
+
+### Setup .rbenv-vars
 
 I usualy put development and testing db credentials in the same var.
 Services credentials such as SES or Facebook are also set up here.
@@ -17,18 +18,9 @@ Services credentials such as SES or Facebook are also set up here.
     DEV_DB_NAME=XXX
     DEV_DB_USER=root
     DEV_DB_PASSWORD=XXXX
-    FB_APP_ID=XXXX
-    FB_APP_SECRET=XXXX
-    AWS_KEY_ID=XXXX
-    AWS_ACCESS_KEY=XXXX
-    SES_KEY_ID=XXXX
-    SES_ACCESS_KEY=XXXX
 
-# 3. Setup database
-
-Add _mysql2_ gem
-
-    gem 'mysql2'
+### Setup database
+**TODO: modifies the database.yml file using the application template**
 
 Setup database.yml so it uses env
 
@@ -61,7 +53,7 @@ Generate databases
 
     rake db:create
 
-# 4. Setup application.rb
+### Setup application.rb
 
 First thing is to disable some generators
 
@@ -80,25 +72,7 @@ Also disable initialize on precompile if in heroku
 
     config.assets.initialize_on_precompile = false
 
-# 5. Setup rspec and factory girl
-
-Add rspec and fg to Gemfile
-
-    group :development, :test do
-      gem 'factory_girl_rails', '~> 3.0'
-      gem 'rspec-rails', "~> 2.0"
-      gem 'debugger', :require => 'ruby-debug'
-    end
-
-Run the rspec generator
-
-    rails generate rspec:install
-
-Remove the original test directory
-
-    rm -r test
-
-# 6. Setup mailing using SES (if required)
+### Setup mailing using SES (if required)
 
 Add the _ses_ and _mail_view_ gems to the gemfile
 
@@ -135,7 +109,7 @@ Setup the mail_view preview routes in routes.rb
 
 And add
 
-# 7. Setup delayed job (if required)
+### Setup delayed job (if required)
 
 Add the dj gem to the gemfile
 
@@ -146,15 +120,15 @@ Run the dj generator
     rails generate delayed_job:active_record
     rake db:migrate
 
-# 8.1. Setup authorization using devise
+### Setup authorization using devise
 
-# 8.2. Setup authorization using custom helper.
+### Setup authorization using custom helper.
 
-# 9. Setup access using canned.
+### Setup access using canned.
 
-# 10. Setup api base controller.
+### Setup api base controller.
 
-# 11. Setup json responses (if building an API)
+### Setup json responses (if building an API)
 
 First add formats to wrap_parameters.rb
 
@@ -173,7 +147,7 @@ Add a rable initializer (rabl.rb)
       config.include_child_root = false
     end
 
-# 12. Setup heroku
+### Setup heroku
 
 Add ruby version to gemfile
 
@@ -195,37 +169,3 @@ Remember to disable initialize on precompile (at least for heroku.rb)
 Set heroku as the server enviroment setting RACK_ENV=heroku and RAILS_ENV=heroku
 
 Setup the procfile.
-
-# 100. Initialize git
-
-First the repo
-
-    git init
-
-Then .gitignore
-
-    # Ignore enviroment vars
-    /.env
-    /.rbenv-version
-    /.rbenv-vars
-
-    # Ignore bundler config
-    /.bundle
-
-    # Ignore powder file (if using pow and powder)
-    /.powder
-
-    # Ignore the default SQLite database.
-    /db/*.sqlite3
-
-    # Ignore all logfiles and tempfiles.
-    /tmp
-    /log
-
-    # Ignore compiled assets
-    /public/assets
-
-    # Ignore vagrant local file and ide project
-    .vagrant
-    .project
-
