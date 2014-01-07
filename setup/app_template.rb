@@ -10,7 +10,7 @@ gem_group :development, :test do
   gem 'guard-rspec', require: false
   gem 'rspec-nc', require: false
   gem 'pry-rails'
-  gem 'faker', require: false
+  gem 'faker'
 end
 
 gem_group :test do
