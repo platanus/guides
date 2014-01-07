@@ -4,7 +4,7 @@
 
 The most common gems and initial configurations are included in a new app by using our [application template](/setup/app_template.rb). In order to use the template we need to pass it as an option to the `rails new` command, like this:
 
-`rails . new -m https://raw.github.com/platanus/guides/master/setup/app_template.rb --skip-test-unit`
+`rails new . -m https://raw.github.com/platanus/guides/master/setup/app_template.rb --skip-test-unit`
 
 Note that we're skipping the default generation of the testing resources, since we'll be using `rspec` instead.
 
