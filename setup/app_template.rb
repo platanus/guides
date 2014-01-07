@@ -25,7 +25,7 @@ inject_into_file 'spec/spec_helper.rb', "\n  config.include FactoryGirl::Syntax:
 
 run "bundle binstubs guard"
 run "guard init rspec"
-gsub_file 'Guardfile', 'guard :rspec do', 'guard :rspec, binstubs: true, zeus: true do'
+gsub_file 'Guardfile', 'guard :rspec do', "guard :rspec, cmd: 'zeus rspec' do"
 
 append_to_file '.rspec', "--format=doc\n--format=Nc"
 
