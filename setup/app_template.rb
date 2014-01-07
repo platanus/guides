@@ -27,6 +27,8 @@ run "bundle binstubs guard"
 run "guard init rspec"
 gsub_file 'Guardfile', 'guard :rspec do', 'guard :rspec, binstubs: true, zeus: true do'
 
+append_to_file '.gitignore', '.rbenv-vars'
+
 git :init
 git add: "."
 git commit: %Q{ -m 'Initial commit' }
