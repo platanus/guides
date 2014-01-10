@@ -11,6 +11,7 @@ gem_group :development, :test do
   gem 'rspec-nc', require: false
   gem 'pry-rails'
   gem 'faker'
+  gem 'quiet_assets'
 end
 
 gem_group :test do
