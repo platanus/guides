@@ -43,7 +43,7 @@ Remember to create the `~/.ssh/authorized_keys` file with your public key
 Now logout and login again with the sudoer. Remember remove `ubuntu` user.
 
 ### The deploy user
-
+####FIXME: Add sudo permission for specific tasks
 Create a user that will run all the deployment tasks
 ```bash
 adduser deploy
@@ -53,6 +53,7 @@ echo "deploy ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 ### Generate a key pair for this user in the `/home/deploy/.ssh` folder, create it if it doens't exist
 ```bash
+sudo su deploy
 cd ~/.ssh
 ssh-keygen -t rsa -b 4096 -C "deploy@yourdomain"
 ```
@@ -68,6 +69,7 @@ AllowUsers deploy anotheruser
 You can add more users
 
 ### Temp folder for socket files
+####FIXME: This is aweful. Sockets should be in the application specific folder
 ```bash
 su deploy
 mkdir -p /home/deploy/tmp
@@ -77,6 +79,7 @@ mkdir -p /home/deploy/tmp
 
 Install nginx from source
 ```bash
+sudo apt-get install python-software-properties
 sudo add-apt-repository ppa:nginx/stable
 sudo apt-get update
 sudo apt-get -y install nginx
@@ -115,14 +118,14 @@ Reload the profile, install one or more rubies and then rehash to refresh the sh
 
 ```bash
 source ~/.bashrc
-rbenv install 2.0.0-p0  #repeat for all the rubies you want to support
+rbenv install 2.0.0-p357  #repeat for all the rubies you want to support
 rbenv rehash
 ```
 
 Set your new rbenv ruby as the new system-wide default ruby for all users using rbenv
 
 ```bash
-rbenv global 2.0.0-p0
+rbenv global 2.0.0-p357
 ```
 
 ## Install nodenv and nodejs
@@ -152,14 +155,14 @@ Reload the profile, install one or more nodes and then rehash to refresh the shi
 
 ```bash
 source ~/.bashrc
-nodenv install 0.10.3
+nodenv install 0.10.24
 nodenv rehash
 ```
 
 Set your new nodenv nodejs as the new system-wide default node for all users using nodenv
 
 ```bash
-nodenv global 0.10.3
+nodenv global 0.10.24
 ```
 
 ## Install bundler
@@ -170,6 +173,8 @@ gem install bundler
 rbenv rehash
 ```
 **note**  You need to install bundler for all the rubies you installed
+
+# Optional
 
 ## Install mysql server 5.5
 
@@ -192,7 +197,7 @@ mysql> flush privileges
 
 In the `/etc/mysql/my.cfg` change the binding to `0.0.0.0`
 
-## Your app
+# Your app
 
 Adds unicorn as a production gem in the `GemFile`
 ```ruby
