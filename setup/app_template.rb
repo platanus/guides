@@ -1,6 +1,7 @@
 remove_file "README.rdoc"
 create_file "README.md", "TODO: write an awesome README file"
 create_file ".rbenv-vars"
+create_file ".ruby-version", "2.0.0-p353"
 
 gem_group :development, :test do
   gem "rspec-rails"
@@ -33,6 +34,7 @@ gsub_file 'Guardfile', 'guard :rspec do', "guard :rspec, cmd: 'zeus rspec' do"
 append_to_file '.rspec', "--format=doc\n--format=Nc"
 
 append_to_file '.gitignore', '.rbenv-vars'
+append_to_file '.gitignore', '.ruby-version'
 
 git :init
 git add: "."
