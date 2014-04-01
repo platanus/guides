@@ -1,0 +1,3 @@
+DEV_DB_NAME=<%= @app_name.downcase %>
+DEV_DB_USER=root
+DEV_DB_PASSWORD=
