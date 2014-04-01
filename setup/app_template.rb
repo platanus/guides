@@ -1,6 +1,16 @@
+# configure rails_root folder as source path for copying files
+#
+# check http://technology.stitchfix.com/blog/2014/01/06/rails-app-templates/
+# for more information
+def source_paths
+  Array(super) + 
+    [File.join(File.expand_path(File.dirname(__FILE__)),'rails_root')]
+end
+
 remove_file "README.rdoc"
 create_file "README.md", "TODO: write an awesome README file"
 create_file ".rbenv-vars"
+template '.rbenv-vars.example'
 create_file ".ruby-version", "2.0.0-p353"
 
 gem_group :development, :test do
