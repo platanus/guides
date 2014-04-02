@@ -20,5 +20,5 @@ To give a talk
 
 
 [new issue]: https://github.com/platanus/guides/issues/new
-[guides repo]: https://github.com/platanus/guides/issues/new
+[guides repo]: https://github.com/platanus/guides
 [tinytalk issues]: https://github.com/platanus/guides/issues?labels=tinytalk&page=1&state=open
