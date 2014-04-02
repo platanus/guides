@@ -15,7 +15,7 @@ To give a talk
 --------------
 
 1. Pick a topic from the [tinytalk issues]
-1. Label the issue with the `taken` label
+1. Assing yourself the issue
 1. Comment the issue committing to a date to do the talk :calendar:
 
 
