@@ -16,7 +16,7 @@ To give a talk
 
 1. Pick a topic from the [tinytalk issues]
 1. Label the issue with the `taken` label
-1. Make a comment commiting to a data to do the talk
+1. Comment the issue committing to a date to do the talk :calendar:
 
 
 [new issue]: https://github.com/platanus/guides/issues/new
