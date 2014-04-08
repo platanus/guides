@@ -3,7 +3,7 @@
 # check http://technology.stitchfix.com/blog/2014/01/06/rails-app-templates/
 # for more information
 def source_paths
-  Array(super) + 
+  Array(super) +
     [File.join(File.expand_path(File.dirname(__FILE__)),'rails_root')]
 end
 
@@ -12,6 +12,35 @@ create_file "README.md", "TODO: write an awesome README file"
 create_file ".rbenv-vars"
 template '.rbenv-vars.example'
 create_file ".ruby-version", "2.0.0-p353"
+
+# Adds database gem and config
+# params
+#   name: the name of the database
+#   gem_name: the name of the gem for that database
+def ask_for_database db
+  if not @db_setted and yes?("Are you going to use #{db[:name]}?")
+    # Save the db to use
+    @db_setted = true
+
+    # Set settings con config/database.yml
+    inside 'config' do
+      remove_file 'database.yml'
+      copy_file "database_#{db[:name]}.yml", 'database.yml'
+    end
+
+    # Adds the gem to the GemFile
+    gem db[:gem_name]
+    gsub_file('GemFile', /^(gem \"#{db[:gem_name]}\".*)/){ |*match|
+      "# Use #{db[:name]} as the database for Active Record\n#{match[0]}\n"
+    }
+
+    # Remove default sqlite gem
+    gsub_file 'GemFile', /.*sqlite.*\n*/, ''
+  end
+end
+
+ask_for_database name: 'Mysql', gem_name: 'mysql2'
+ask_for_database name: 'Postgresql', gem_name: 'pg'
 
 gem_group :development, :test do
   gem "rspec-rails"
