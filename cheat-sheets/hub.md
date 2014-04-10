@@ -1,4 +1,4 @@
-Hub Cheetsheat
+Hub Cheatsheet
 ============
 
 A guide for common [hub] CLI commands
