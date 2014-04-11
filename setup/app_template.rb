@@ -4,7 +4,8 @@
 # for more information
 def source_paths
   Array(super) +
-    [File.join(File.expand_path(File.dirname(__FILE__)),'rails_root')]
+    [File.join(File.expand_path(File.dirname(__FILE__)),'rails_root')]   +
+    [File.join(File.expand_path(File.dirname(__FILE__)),'rails_root', 'config')]
 end
 
 remove_file "README.rdoc"
@@ -28,19 +29,19 @@ def ask_for_database db
       copy_file "database_#{db[:name]}.yml", 'database.yml'
     end
 
-    # Adds the gem to the GemFile
+    # Adds the gem to the Gemfile
     gem db[:gem_name]
-    gsub_file('GemFile', /^(gem \"#{db[:gem_name]}\".*)/){ |*match|
+    gsub_file('Gemfile', /^(gem \"#{db[:gem_name]}\".*)/){ |*match|
       "# Use #{db[:name]} as the database for Active Record\n#{match[0]}\n"
     }
 
     # Remove default sqlite gem
-    gsub_file 'GemFile', /.*sqlite.*\n*/, ''
+    gsub_file 'Gemfile', /.*sqlite.*\n*/, ''
   end
 end
 
-ask_for_database name: 'Mysql', gem_name: 'mysql2'
-ask_for_database name: 'Postgresql', gem_name: 'pg'
+ask_for_database name: 'mysql', gem_name: 'mysql2'
+ask_for_database name: 'postgresql', gem_name: 'pg'
 
 gem_group :development, :test do
   gem "rspec-rails"
