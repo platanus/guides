@@ -37,7 +37,7 @@ Guides for getting things done, programming well, and programming in style.
 Credits
 -------
 
-Thank's to the guys of [Thoughbot](https://github.com/thoughtbot) ![thoughtbot](https://avatars1.githubusercontent.com/u/6183?s=20) for the idea and the [guides](https://github.com/thoughtbot/guides) base and to all our own [contributors](https://github.com/platanus/guides/graphs/contributors)!
+Thank's to the guys of [Thoughbot](https://github.com/thoughtbot) ![thoughtbot](https://avatars1.githubusercontent.com/u/6183?s=20) for the idea and the base [guides](https://github.com/thoughtbot/guides). Also special thanks to all our own [contributors](https://github.com/platanus/guides/graphs/contributors)!
 
 ![platanus](http://platan.us/gravatar_with_text.png)
 
