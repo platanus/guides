@@ -74,7 +74,6 @@ gsub_file 'Guardfile', 'guard :rspec do', "guard :rspec, cmd: 'zeus rspec' do"
 append_to_file '.rspec', "--format=doc\n--format=Nc"
 
 append_to_file '.gitignore', ".rbenv-vars\n"
-append_to_file '.gitignore', ".ruby-version\n" 
 
 git :init
 git add: "."
