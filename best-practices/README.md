@@ -169,7 +169,7 @@ Email
 JavaScript
 ----------
 
-* Use CoffeeScript.
+* Prefer CoffeeScript.
 
 HTML
 ----
@@ -203,15 +203,15 @@ Objective-C
 Shell
 -----
 
-* Don't parse the output of `ls`. See [here][parsingls] for details and 
+* Don't parse the output of `ls`. See [here][parsingls] for details and
   alternatives.
-* Don't use `cat` to provide a file on `stdin` to a process that accepts 
+* Don't use `cat` to provide a file on `stdin` to a process that accepts
   file arguments itself.
-* Don't use a `/bin/sh` [shebang][] unless you plan to test and run your 
-  script on at least: Actual Sh, Dash in POSIX-compatible mode (as it 
-  will be run on Debian), and Bash in POSIX-compatible mode (as it will 
+* Don't use a `/bin/sh` [shebang][] unless you plan to test and run your
+  script on at least: Actual Sh, Dash in POSIX-compatible mode (as it
+  will be run on Debian), and Bash in POSIX-compatible mode (as it will
   be run on OSX).
-* Don't use any non-POSIX [features][bashisms] when using a `/bin/sh` 
+* Don't use any non-POSIX [features][bashisms] when using a `/bin/sh`
   [shebang][].
 * If calling `cd`, have code to handle a failure to change directories.
 * If calling `rm` with a variable, ensure the variable is not empty.
@@ -224,16 +224,16 @@ Shell
 * Prefer `printf` over `echo`.
 * Prefer `sed '/re/!d; s//.../'` to `grep re | sed 's/re/.../'`.
 * Prefer `sed 'cmd; cmd'` to `sed -e 'cmd' -e 'cmd'`.
-* Prefer checking exit statuses over output in `if` statements (`if grep 
+* Prefer checking exit statuses over output in `if` statements (`if grep
   -q ...; `, not `if [ -n "$(grep ...)" ];`).
-* Prefer reading environment variables over process output (`$TTY` not 
+* Prefer reading environment variables over process output (`$TTY` not
   `$(tty)`, `$PWD` not `$(pwd)`, etc).
 * Use `$( ... )`, not backticks for capturing command output.
 * Use `$(( ... ))`, not `expr` for executing arithmetic expressions.
-* Use `1` and `0`, not `true` and `false` to represent boolean 
+* Use `1` and `0`, not `true` and `false` to represent boolean
   variables.
 * Use `find -print0 | xargs -0`, not `find | xargs`.
-* Use quotes around every `"$variable"` and `"$( ... )"` expression 
+* Use quotes around every `"$variable"` and `"$( ... )"` expression
   unless you want them to be word-split and/or interpreted as globs.
 * Use the `local` keyword with function-scoped variables.
 * Identify common problems with [shellcheck][].
