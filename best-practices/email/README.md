@@ -28,3 +28,5 @@ topic.subscribe('http://example.com/messages')
 
 # Also remember to add this SNS Topic to our SES configuration for Bounces.
 ```
+
+read more on Amazons documentation: http://docs.aws.amazon.com/AWSRubySDK/latest/AWS/SNS.html
