@@ -45,7 +45,7 @@ rake, version 10.2.2
 ```
 
 It's a little tedious to write `bundle exec` every time. To prevent that, bundler
-provides a way to create binstubs for the gem executables.
+provides a way to create binstubs for the gem executables. [Generate only the binstubs your project needs][binstubs]
 
 ```shell
 $ bundle binstubs rake
@@ -59,3 +59,5 @@ executable. That folder should be added to the version control of your project.
 **Note:** There are a few ways to use the project binstubs directly, but the
 bundler authors discourage that. They want you to be able to choose whether you
 want to execute the global version with `rake` or the bundled version with `bin/rake`
+
+[binstubs]: https://coderwall.com/p/vhfxia
