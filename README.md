@@ -39,7 +39,7 @@ Credits
 
 Thank's to the guys of [Thoughbot](https://github.com/thoughtbot) ![thoughtbot](https://avatars1.githubusercontent.com/u/6183?s=20) for the idea and the base [guides](https://github.com/thoughtbot/guides). Also special thanks to all our own [contributors](https://github.com/platanus/guides/graphs/contributors)!
 
-![platanus](http://platan.us/gravatar_with_text.png)
+<img src="http://platan.us/gravatar_with_text.png" alt="Platanus" width="250"/>
 
 Guides is maintained by [platanus](http://platan.us).
 
