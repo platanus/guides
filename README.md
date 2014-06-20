@@ -10,7 +10,7 @@ Guides for getting things done, programming well, and programming in style.
 * [Code Review](/code-review)
 * [Best Practices](/best-practices)
 * [Style](/style)
-* [Cheet Sheets](/cheet-sheets)
+* [Cheat Sheets](/cheat-sheets)
   * [Hub](/cheet-sheets/hub.md)
 * [Legacy Guides](/legacy) (we should review and rewrite this guides)
   * [Setup](/legacy/setup)  
