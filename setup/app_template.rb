@@ -41,8 +41,28 @@ def ask_for_database db
   end
 end
 
+# Adds devise gem
+def ask_for_devise
+  if yes?("Are you going to use devise? (needed for active admin)")
+    # Adds the gem to the Gemfile
+    gem 'devise'
+    @use_devise = true
+  end
+end
+
+# Adds activeadmin gem
+def ask_for_active_admin
+  if @use_devise and yes?("Are you going to use active_admin?")
+    # Adds the gem to the Gemfile
+    gem 'activeadmin', github: 'gregbell/active_admin'
+    @use_activeadmin = true
+  end
+end
+
 ask_for_database name: 'mysql', gem_name: 'mysql2'
 ask_for_database name: 'postgresql', gem_name: 'pg'
+ask_for_devise
+ask_for_active_admin
 
 gem_group :development, :test do
   gem "rspec-rails"
@@ -74,7 +94,12 @@ gsub_file 'Guardfile', 'guard :rspec do', "guard :rspec, cmd: 'zeus rspec' do"
 
 append_to_file '.rspec', "--format=doc\n--format=Nc"
 
+run "bundle install"
+run "rails generate devise:install" if @use_devise
+run "rails generate active_admin:install" if @use_activeadmin
+
 append_to_file '.gitignore', ".rbenv-vars\n"
+append_to_file '.gitignore', ".powder\n"
 
 git :init
 git add: "."
