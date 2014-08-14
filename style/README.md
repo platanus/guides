@@ -10,9 +10,11 @@ Git
 * Prefix feature branch names with your initials.
 * Squash multiple trivial commits into a single commit.
 * Write a [good commit message].
+* If you are on an opensource project, use this conventions. [conventional changelog] 
 
 [rebase workflow]: https://github.com/thoughtbot/guides/tree/master/protocol#merge
 [good commit message]: http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
+[conventional changelog]: https://github.com/ajoslin/conventional-changelog/blob/master/CONVENTIONS.md
 
 Formatting
 ----------
