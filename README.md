@@ -1,4 +1,4 @@
-Guides to be happy developers ;)
+Guides to be happy developers ;) [![Stories in Ready](https://badge.waffle.io/platanus/guides.svg?label=ready&title=Ready)](http://waffle.io/platanus/guides)
 ======
 
 Guides for getting things done, programming well, and programming in style.
