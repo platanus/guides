@@ -3,6 +3,14 @@ Style
 
 A guide for programming in style.
 
+AngularJS
+---------
+
+* Angular styleguides https://github.com/platanus/angularjs-styleguide
+
+I forked the Angular Styleguide to the platanus repo to be able to comment and also contribute 
+with our own view on how angular apps should be written
+
 Git
 ---
 
