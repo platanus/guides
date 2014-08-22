@@ -4,6 +4,18 @@ Ruby Projects Protocol
 A guide to work around the hassle of activating the right gem, using
 the right ruby, and everything ruby related
 
+Ruby version
+------------
+
+When defining a ruby, use the version without patch. This way if you change
+the patch version of a ruby installation your project will continue to work.
+
+```
+# Instead of this
+2.0.0-p451
+# Use this
+2.0.0
+```
 
 Bundle exec and binstubs
 ------------------------
