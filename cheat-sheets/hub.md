@@ -25,11 +25,4 @@ To create a pull request against other branch.
     # or
     git pull-request -b <username_orgname>:<branch_name>
 
-You can also assign a pull-request to an existing issue
-
-    git pull-request -i <issue_github_url>
-    # example
-    git pull-request -i https://github.com/platanus/guides/issues/1
-
-
 [hub]: http://hub.github.com/

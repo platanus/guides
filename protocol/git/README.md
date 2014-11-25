@@ -11,9 +11,10 @@ Maintain a Repo
 * Delete local and remote feature branches after merging.
 * Perform work in a feature branch.
 * Rebase frequently to incorporate upstream changes.
-* Use a [pull request] for code reviews.
+* Use a [pull request] for code reviews. [pull request from cli]
 
 [pull request]: https://help.github.com/articles/using-pull-requests/
+[pull request from cli]: /cheat-sheets/hub.md#pull-request
 
 Write a Feature
 ---------------
@@ -51,19 +52,19 @@ Share your branch.
 
     git push origin <branch-name>
 
-Submit a [pull request]. You can use [hub pull requests](/cheet-sheets/hub.md).
+Submit a [pull request]. You can use [hub pull requests].
 
 If needed, ask for a code review in the project's chat room.
 
 [good commit message]: http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
 [pull request]: https://help.github.com/articles/using-pull-requests/
+[hub pull requests]: /cheet-sheets/hub.md#pull-request
 
 Review Code
 -----------
 
 A team member other than the author reviews the pull request. They follow
-[Code Review](/code-review) guidelines to avoid
-miscommunication.
+[Code Review](/code-review) guidelines to avoid miscommunication.
 
 They make comments and ask questions directly on lines of code in the GitHub
 web interface or in the project's chat room.

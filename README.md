@@ -11,11 +11,7 @@ Guides for getting things done, programming well, and programming in style.
 * [Best Practices](/best-practices)
 * [Style](/style)
 * [Cheat Sheets](/cheat-sheets)
-  * [Hub](/cheet-sheets/hub.md)
-* [Legacy Guides](/legacy) (we should review and rewrite this guides)
-  * [Setup](/legacy/setup)  
-  * [Deployment](/legacy/deployment)  
-  * [Productivity](/legacy/productivity)  
+  * [Hub](/cheat-sheets/hub.md)
 
 ### High level guidelines:
 

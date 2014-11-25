@@ -8,14 +8,12 @@ AngularJS
 
 * Angular styleguides https://github.com/platanus/angularjs-styleguide
 
-I forked the Angular Styleguide to the platanus repo to be able to comment and also contribute 
-with our own view on how angular apps should be written
+We have a platanus fork of the Angular Styleguide to be able to comment and also contribute with our own view on how angular apps should be written
 
 Git
 ---
 
 * Avoid merge commits by using a [rebase workflow].
-* Prefix feature branch names with your initials.
 * Squash multiple trivial commits into a single commit.
 * Write a [good commit message].
 * If you are on an opensource project, use this conventions. [conventional changelog] 
@@ -113,9 +111,9 @@ Sass
 * Avoid nesting within a media query.
 
 ### Organization
-* Use Bourbon for a Sass Library.
-* Use Neat for a grid framework.
-* Use Bitters / Base folder for style on HTML tags, global variables, global extends and global mixins.
+~~* Use Bourbon for a Sass Library.~~
+~~* Use Neat for a grid framework.~~
+~~* Use Bitters / Base folder for style on HTML tags, global variables, global extends and global mixins.~~
 * Use Normalize as a browser reset.
 * Use HTML structure for ordering of selectors. Don't just put styles at the bottom of the Sass file.
 * Prefer the same file structure that is found in app/views.
@@ -276,52 +274,3 @@ Testing
 * Use a single, top-level `describe ClassName` block.
 
 [Imperative mood]: http://en.wikipedia.org/wiki/Imperative_mood
-
-Objective-C
------------
-
-[Sample](samples/ObjectiveC.m)
-
-* `#import` linked frameworks in the prefix header (`ProjectName-Prefix.pch`).
-* Keep `.xib` files grouped with their associated view class.
-* Order `#import` statements alphabetically.
-* Order `@class` directives alphabetically.
-* Order `@property` modifiers: memory management, atomicity, writability.
-* Organize classes into `models`, `views`, `controllers`, `categories`,
-  and `services` directories.
-* Prefer `@class` to `#import` when referring to external classes in a public
-  `@interface`.
-* Prefer `@property` to declaring instance variables.
-* Prefix class names with a 2 or 3 letter project acronym.
-* Prefix string constants being used as keys with 'k'.
-* Remove `#import` statements for `Foundation` and `UIKit` in new project
-  templates.
-* Separate methods by function using `#pragma mark - <Section Name>`
-* Separate sections into subsections using `#pragma mark <Subsection Name>`
-* Use `@[arrayObject]`, `@{@"key" : value}`, `@(YES or NO)`, and `@5.0`
-  literals.
-* Use `@interface ClassName ()` to declare private properties.
-* Use `lowerCamelCase` for method names.
-* Use `NSAssert` in methods that require the presence of certain arguments.
-* Write methods using the happy path. Indent the exceptional cases. Keep the
-  optimal case in the left-most column.
-
-Python
-------
-
-* Follow [PEP 8].
-
-[PEP 8]: http://www.python.org/dev/peps/pep-0008/
-
-Shell
------
-
-* Break long lines on `|`, `&&`, or `||` and indent the continuations.
-* Don't add an extension to executable shell scripts.
-* Don't put a line break before `then` or `do`, use `if ...; then` and 
-  `while ...; do`.
-* Use `for x; do`, not `for x in "$@"; do`.
-* Use `snake_case` for variable names and `ALLCAPS` for environment 
-  variables.
-* Use single quotes for strings that don't contain escapes or variables.
-* Use two-space indentation.
