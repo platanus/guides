@@ -24,8 +24,8 @@ Object-Oriented Design
 * Limit an object's dependencies (entities that depend on an object).
 * Prefer composition over inheritance.
 * Prefer small methods. Between one and five lines is best.
-* Prefer small objects with a single, well-defined responsibility. When an
-  object exceeds 100 lines, it may be doing too many things.
+* Prefer small classes with a single, well-defined responsibility. When a
+  class exceeds 100 lines, it may be doing too many things.
 * [Tell, don't ask].
 
 [Tell, don't ask]: http://robots.thoughtbot.com/post/27572137956/tell-dont-ask
@@ -42,7 +42,7 @@ Ruby
 * Prefer `private` when indicating scope. Use `protected` only with comparison
   methods like `def ==(other)`, `def <(other)`, and `def >(other)`.
 
-[Bundler binstubs](https://github.com/sstephenson/rbenv/wiki/Understanding-binstubs)
+[Bundler binstubs]: https://github.com/sstephenson/rbenv/wiki/Understanding-binstubs
 
 Ruby Gems
 ---------
@@ -69,6 +69,8 @@ Rails
 * Don't change a migration after it has been merged into master if the desired
   change can be solved with another migration.
 * Don't reference a model class directly from a view.
+* Don't return false from `ActiveModel` callbacks, but instead raise an
+  exception.
 * Don't use instance variables in partials. Pass local variables to partials
   from view templates.
 * Don't use SQL or SQL fragments (`where('inviter_id IS NOT NULL')`) outside of
@@ -87,10 +89,17 @@ Rails
   (`user_id`).
 * Use `db/seeds.rb` for data that is required in all environments.
 * Use `dev:prime` rake task for development environment seed data.
+* Prefer `cookies.signed` over `cookies` to [prevent tampering].
+* Prefer `Time.current` over `Time.now`
+* Prefer `Date.current` over `Date.today`
+* Prefer `Time.zone.parse("2014-07-04 16:05:37")` over `Time.parse("2014-07-04 16:05:37")`
+* Use `ENV.fetch` for environment variables instead of `ENV[]`so that unset
+  environment variables are detected on deploy.
 
 [`.ruby-version`]: https://gist.github.com/fnichol/1912050
 [redirects]: http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.30
 [Spring binstubs]: https://github.com/sstephenson/rbenv/wiki/Understanding-binstubs
+[prevent tampering]: http://blog.bigbinary.com/2013/03/19/cookies-on-rails.html
 
 Testing
 -------
@@ -170,6 +179,22 @@ JavaScript
 ----------
 
 ~~* Prefer CoffeeScript.~~
+
+Angular
+-------
+
+* [Avoid manual dependency annotations][annotations]. Disable mangling or use 
+  [pre-processor][ngannotate] for annotations.
+* Prefer `factory` to `service`. If you desire a singleton, wrap the singleton
+  class in a factory function and return a new instance of that class from the
+  factory.
+* Prefer the `translate` directive to the `translate` filter for [performance
+  reasons][angular-translate].
+* Don't use the `jQuery` or `$` global. Access jQuery via `angular.element`.
+
++[annotations]: http://robots.thoughtbot.com/avoid-angularjs-dependency-nnotation-with-rails
+[ngannotate]: https://github.com/kikonen/ngannotate-rails
++[angular-translate]: https://github.com/angular-translate/angular-translate/wiki/Getting-Started#using-translate-directive
 
 HTML
 ----

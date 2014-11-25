@@ -46,7 +46,12 @@ Write a [good commit message]. Example format:
     * More information about commit (under 72 characters).
     * More information about commit (under 72 characters).
 
-    http:://project.management-system.com/ticket/123
+    http://project.management-system.com/ticket/123
+
+If you've created more than one commit, use a rebase to squash them into
+cohesive commits with good messages:
+
+    git rebase -i origin/master
 
 Share your branch.
 
@@ -89,6 +94,12 @@ tests.
     git fetch origin
     git rebase -i origin/master
 
+Force push your branch. This allows GitHub to automatically close your pull
+request and mark it as merged when your commit(s) are pushed to master. It also makes it possible to [find the pull request] that brought in your changes.
+
+    git push --force origin <branch-name>
+
+
 View a list of new commits. View changed files. Merge branch into master.
 
     git log origin/master..<branch-name>
@@ -104,3 +115,5 @@ Delete your remote feature branch.
 Delete your local feature branch.
 
     git branch --delete <branch-name>
+
+[find the pull request]: http://stackoverflow.com/a/17819027

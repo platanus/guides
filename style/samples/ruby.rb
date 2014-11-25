@@ -1,5 +1,5 @@
 class SomeClass
-  SOME_CONSTANT = 'upper case name'
+  SOME_CONSTANT = "upper case name"
 
   def initialize(attributes)
     @some_attribute = attributes[:some_attribute]
@@ -13,18 +13,26 @@ class SomeClass
       each_method_lives_on_its_own_line
   end
 
+  def method_with_required_keyword_arguments(one:, two:)
+  end
+
   def method_with_multiline_block
     some_method_before_block(should_be_followed_by_a_newline)
 
     items.each do |item|
       do_something_with_item
+      perform_another_action
     end
 
     some_method_after_block(should_follow_after_newline)
   end
 
-  def method_with_single_line_block
-    items.map { |item| item.some_attribute }
+  def method_with_single_method_block
+    items.map(&:some_attribute)
+  end
+
+  def method_with_oneline_combined_methods_block
+    items.map { |item| "#{item.one} #{item.two}" }
   end
 
   def method_that_returns_an_array
@@ -32,14 +40,22 @@ class SomeClass
   end
 
   def method_that_returns_a_hash
-    { :key => 'value' }
+    { :key => "value" }
   end
 
   def method_with_large_hash
     {
-      :one => 'value',
-      :two => 'value'
+      :one => "value",
+      :two => "value",
     }
+  end
+
+  def method_with_large_array
+    [
+      :one,
+      :two,
+      :three,
+    ]
   end
 
   def invoke_method_with_arguments_on_multiple_lines
@@ -54,8 +70,12 @@ class SomeClass
                 two)
   end
 
-  def method_that_uses_infix_operators
+  def method_which_uses_infix_operators
     left + middle - right
+  end
+
+  def method_which_uses_unary_operator
+    !signed_in?
   end
 
   def method_without_arguments
@@ -76,6 +96,12 @@ class SomeClass
   def self.class_method
     method_body
   end
+
+  protected
+
+  attr_reader :foo
+  attr_accessor :bar
+  attr_writer :baz
 
   private
 
