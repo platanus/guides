@@ -13,7 +13,6 @@ Guides to be happy developers ;)
 [tinytalk]: https://badge.waffle.io/platanus/guides.svg?label=tinytalk&title=tinytalk
 [blog-post]: https://badge.waffle.io/platanus/guides.svg?label=blog-post&title=blog-post
 [open-banana]: https://badge.waffle.io/platanus/guides.svg?label=open-banana&title=open-banana
-======
 
 Guides for getting things done, programming well, and programming in style.
 
