@@ -1,4 +1,5 @@
 Guides to be happy developers ;) 
+=========
 
 [![Stories in discussion][discussion]][waffle]
 [![Stories in workshop][workshop]][waffle]
