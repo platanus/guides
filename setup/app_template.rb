@@ -67,7 +67,7 @@ ask_for_active_admin
 gem_group :development, :test do
   gem "rspec-rails"
   gem 'factory_girl_rails'
-  gem 'debugger', require: 'ruby-debug'
+  gem 'pry-byebug'
   gem 'zeus'
   gem 'guard-rspec', require: false
   gem 'rspec-nc', require: false
