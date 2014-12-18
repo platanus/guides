@@ -2,17 +2,11 @@ Guides to be happy developers ;)
 =========
 
 [![Stories in discussion][discussion]][waffle]
-[![Stories in workshop][workshop]][waffle]
 [![Stories in tinytalk][tinytalk]][waffle]
-[![Stories in blog-post][blog-post]][waffle]
-[![Stories in open-banana][open-banana]][waffle]
 
 [waffle]: http://waffle.io/platanus/guides
 [discussion]: https://badge.waffle.io/platanus/guides.svg?label=discussion&title=discussion
-[workshop]: https://badge.waffle.io/platanus/guides.svg?label=workshop&title=workshop
 [tinytalk]: https://badge.waffle.io/platanus/guides.svg?label=tinytalk&title=tinytalk
-[blog-post]: https://badge.waffle.io/platanus/guides.svg?label=blog-post&title=blog-post
-[open-banana]: https://badge.waffle.io/platanus/guides.svg?label=open-banana&title=open-banana
 
 Guides for getting things done, programming well, and programming in style.
 
@@ -25,6 +19,8 @@ Guides for getting things done, programming well, and programming in style.
 * [Style](/style)
 * [Cheat Sheets](/cheat-sheets)
   * [Hub](/cheat-sheets/hub.md)
+* [Playbook](/playbook)
+  * [Investment Day](/playbook/investment-day/README.md)
 
 ### High level guidelines:
 
