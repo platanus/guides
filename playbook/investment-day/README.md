@@ -21,7 +21,7 @@ Projectos open source realizados por platanus para el uso interno y de la comuni
 
 - Deben estar disponibles en los diferentes medios de distribucion (rubygems, bower, etc...)
 - Deben tener un readme que explique como utilizar sus principales features
-- Se debe trabajar al menos de a dos en un mismo proyecto
+- Se debe trabajar al menos de a dos en un mismo proyecto, no se puede trabajar solo.
 
 #### Administracion. 
 
@@ -32,9 +32,28 @@ Cada projecto se administra con su propio repositorio, con issues y opcionalment
 En [guides waffle][waffle-guides] existe una columna de **open-banana** con el listado de proyectos.
 
 
+## Codigo Banana Blog
+
+Los blog posts seran publicados periodicamente en el blog de platanus [codigo-banana][]
+
+#### Objetivos
+
+- Entregar conocimiento sobre el tema en cuestion a todos los desarrolladores.
+- Dejar un registro permanente de la mejores prácticas y herramientas que se deben usar en platanus.
+
+#### Reglas
+
+- Hacer al menos un blog post cada 2 meses.
+- La creacion post tiene que seguir el flujo descrito en la [seccion blog](/playbook/investment-day/blog/README.md)
+
+#### Administracion [![Stories in blog-post][badge-codigo-banana]][waffle-codigo-banana]
+
+Los post se administra en el waffle del repositorio del mismo blog. [waffle codigo banana][waffle-codigo-banana]
+
+
 ## Workshop
 
-La dea de los workshops es tener una sesion en la que podramos tomar un caso real, de algun proyecto, y realizar una discusión guiada por alguien o un grupo experto en el tema.
+La idea de los workshops es tener una sesión en la que podramos tomar un caso real, de algún proyecto, y realizar una discusión guiada por alguien o un grupo experto en el tema.
 
 **Frecuencia**: La idea es apuntar a tener 1 workshop cada 1 o 2 meses
 
@@ -53,24 +72,6 @@ La dea de los workshops es tener una sesion en la que podramos tomar un caso rea
 #### Administracion [![Stories in workshop][badge-workshop]][waffle-guides]
 
 En [guides waffle][waffle-guides] existe una columna de **workshop** con el listado de casos.
-
-
-## Codigo Banana Blog
-
-Los blog posts seran publicados periodicamente en el blog de platanus [codigo-banana][]
-
-#### Objetivos
-
-- Entregar conocimiento sobre el tema en cuestion a todos los desarrolladores.
-- Dejar un registro permanente de la mejores prácticas y herramientas que se deben usar en platanus.
-
-#### Reglas
-
-- Hacer al menos un blog post cada 2 meses.
-
-#### Administracion [![Stories in blog-post][badge-codigo-banana]][waffle-codigo-banana]
-
-Los post se administra en el waffle del repositorio del mismo blog. [waffle codigo banana][waffle-codigo-banana]
 
 
 [waffle-guides]: http://waffle.io/platanus/guides
