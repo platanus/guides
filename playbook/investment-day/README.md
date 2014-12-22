@@ -16,6 +16,7 @@ Projectos open source realizados por platanus para el uso interno y de la comuni
 
 - Disponibilizar codigo que puede ser reutilizado en diferentes projectos
 - Plasmar buenas practicas y estandares de como hacemos las cosas en platanus
+- Agregar el projecto en la seccion [platanus toolbelt][platanus-toolbelt] de guides
 
 #### Reglas
 
@@ -73,7 +74,7 @@ La idea de los workshops es tener una sesión en la que podramos tomar un caso r
 
 En [guides waffle][waffle-guides] existe una columna de **workshop** con el listado de casos.
 
-
+[platanus-toolbelt]: http://github.com/platanus/guides/toolbelt
 [waffle-guides]: http://waffle.io/platanus/guides
 [waffle-codigo-banana]: http://waffle.io/platanus/blog
 [badge-workshop]: https://badge.waffle.io/platanus/guides.svg?label=workshop&title=workshop
