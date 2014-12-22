@@ -1,4 +1,4 @@
-# Investmed Day
+# Investment Day
 
 Los dias viernes nuestro tiempo esta dedicado a invertir en nosotros mismos, la empresa y la comunidad.
 
