@@ -21,6 +21,7 @@ Guides for getting things done, programming well, and programming in style.
   * [Hub](/cheat-sheets/hub.md)
 * [Playbook](/playbook)
   * [Investment Day](/playbook/investment-day/README.md)
+* [Toolbelt](/toolbelt)
 
 ### High level guidelines:
 
