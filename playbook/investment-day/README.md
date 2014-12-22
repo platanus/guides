@@ -46,7 +46,7 @@ Los blog posts seran publicados periodicamente en el blog de platanus [codigo-ba
 - Hacer al menos un blog post cada 2 meses.
 - La creacion post tiene que seguir el flujo descrito en la [seccion blog](/playbook/investment-day/blog/README.md)
 
-#### Administracion [![Stories in blog-post][badge-codigo-banana]][waffle-codigo-banana]
+#### Administracion
 
 Los post se administra en el waffle del repositorio del mismo blog. [waffle codigo banana][waffle-codigo-banana]
 
@@ -78,7 +78,6 @@ En [guides waffle][waffle-guides] existe una columna de **workshop** con el list
 [waffle-codigo-banana]: http://waffle.io/platanus/blog
 [badge-workshop]: https://badge.waffle.io/platanus/guides.svg?label=workshop&title=workshop
 [badge-open-banana]: https://badge.waffle.io/platanus/guides.svg?label=open-banana&title=open-banana
-[badge-codigo-banana]: https://badge.waffle.io/platanus/blog.svg?label=blog-post&title=blog-post
 [codigo-banana]: http://cb.platan.us
 [platanus-guides]: http://github.com/platanus/guides
 
