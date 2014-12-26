@@ -47,4 +47,4 @@ Estas son las herramientas que hemos ido generando para el uso interno y de la c
     Integracion de rails con sistema de pagos Punto Pagos
 
 [punto-pagos-rails-gem]: https://badge.fury.io/rb/punto_pagos_rails.svg
-[punto-pagos-rails-github]: http://github.com/platanus/punto-pagos-rails
+[punto-pagos-rails-github]: http://github.com/platanus/punto_pagos_rails
