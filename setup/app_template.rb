@@ -12,7 +12,7 @@ remove_file "README.rdoc"
 create_file "README.md", "TODO: write an awesome README file"
 create_file ".rbenv-vars"
 template '.rbenv-vars.example'
-create_file ".ruby-version", "2.0.0-p353"
+create_file ".ruby-version", "2.0.0"
 copy_file '.editorconfig'
 
 # Adds database gem and config
