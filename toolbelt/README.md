@@ -25,6 +25,13 @@ Estas son las herramientas que hemos ido generando para el uso interno y de la c
 [rut-bower]: https://badge.fury.io/bo/angular-rut.svg
 [rut-github]: http://github.com/platanus/angular-rut
 
+- #### [angular-auth][auth-github] [![][auth-bower]][auth-github]
+
+    Library to help integrate Token Authentication between Angularjs and json API
+
+[auth-bower]: https://badge.fury.io/bo/angular-auth.svg
+[auth-github]: https://github.com/platanus/angular-auth
+
 ### Rails
 
 - #### [negroku][negroku-github] [![][negroku-gem]][negroku-github]  
