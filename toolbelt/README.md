@@ -2,14 +2,6 @@
 
 Estas son las herramientas que hemos ido generando para el uso interno y de la comunidad.
 
-- Angular
-    + [angular-keep-values](#angular-keep-value)
-    + [angular-restmod](#angular-restmod)
-    + [angular-rut](#angular-rut)
-- Rails
-    + [negroku](#negroku)
-    + [punto_pagos_rails](#punto_pagos_rails)
-
 ### Angular
 
 - #### [angular-keep-values][keep-values-github] [![][keep-values-bower]][keep-values-github]  
@@ -19,7 +11,7 @@ Estas son las herramientas que hemos ido generando para el uso interno y de la c
 [keep-values-bower]: https://badge.fury.io/bo/angular-keep-values.svg
 [keep-values-github]: http://github.com/platanus/angular-keep-values
 
-- #### [platanus/angular-restmod][restmod-github] [![][restmod-bower]][restmod-github]  
+- #### [angular-restmod][restmod-github] [![][restmod-bower]][restmod-github]  
 
     OMR para definir modelos contra una API rest
 
